@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css" />
+    <title>Path Visualizer</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="heading">Path Visualizer</h3>
+      <div class="btn-container">
+        <button class="btn" id="bfs-btn">BFS</button>
+        <button class="btn" id="dfs-btn">DFS</button>
+        <button class="btn" id="djk-btn">Dijkstras</button>
+      </div>
+      <canvas height="500" width="500"> </canvas>
+      <div class="input-container">
+        <div>
+          <p>Source</p>
+          <input
+            class="input"
+            id="s-row"
+            placeholder="row"
+            type="number"
+            min="1"
+          />
+          <input
+            class="input"
+            id="s-col"
+            placeholder="col"
+            type="number"
+            min="1"
+          />
+        </div>
+        <div>
+          <p>Destination</p>
+          <input
+            class="input"
+            id="d-row"
+            placeholder="row"
+            type="number"
+            min="1"
+          />
+          <input
+            class="input"
+            id="d-col"
+            placeholder="col"
+            type="number"
+            min="1"
+          />
+        </div>
+        <button class="btn" id="run-btn">Run</button>
+      </div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+  <footer class="footer">
+    <p>Made with ❤️ by Neutronian</p>
+  </footer>
+</html>
