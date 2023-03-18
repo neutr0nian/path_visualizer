@@ -26,10 +26,7 @@ let ALGOTORUN = "";
 export const blocks = [];
 
 prepareBlocks(blocks);
-animate(blocks);
-fillColor(SOURCE, "purple");
-fillColor(DEST, "green");
-
+drawBlocks();
 sourceRowInput.addEventListener("change", (e) => {
   const row = parseInt(e.target.value) - 1;
   if (row > map.length - 1 || row < 0) {
@@ -91,6 +88,7 @@ destinationColInput.addEventListener("change", (e) => {
 });
 
 bfsBtn.addEventListener("click", () => {
+  drawBlocks();
   dfsBtn.classList.remove("btn-active");
   djkBtn.classList.remove("btn-active");
   bfsBtn.classList.add("btn-active");
@@ -98,6 +96,7 @@ bfsBtn.addEventListener("click", () => {
 });
 
 dfsBtn.addEventListener("click", () => {
+  drawBlocks();
   djkBtn.classList.remove("btn-active");
   bfsBtn.classList.remove("btn-active");
   dfsBtn.classList.add("btn-active");
@@ -105,6 +104,7 @@ dfsBtn.addEventListener("click", () => {
 });
 
 djkBtn.addEventListener("click", () => {
+  drawBlocks();
   dfsBtn.classList.remove("btn-active");
   bfsBtn.classList.remove("btn-active");
   djkBtn.classList.add("btn-active");
@@ -112,8 +112,12 @@ djkBtn.addEventListener("click", () => {
 });
 
 runBtn.addEventListener("click", () => {
+  drawBlocks();
+  runAlgorithm(ALGOTORUN, SOURCE, DEST);
+});
+
+function drawBlocks() {
   animate(blocks);
   fillColor(SOURCE, "purple");
   fillColor(DEST, "green");
-  runAlgorithm(ALGOTORUN, SOURCE, DEST);
-});
+}
