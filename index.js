@@ -49,10 +49,10 @@ sourceColInput.addEventListener("change", (e) => {
   const col = parseInt(e.target.value) - 1;
   if (col > map.length - 1 || col < 0) {
     alert("Please enter valid source column");
-    sourceRowInput.value = SOURCE[1] + 1;
+    sourceColInput.value = SOURCE[1] + 1;
   } else if (map[SOURCE[0]][col] !== 1) {
     alert("Selected [row, col] is not a valid cell");
-    sourceRowInput.value = SOURCE[1] + 1;
+    sourceColInput.value = SOURCE[1] + 1;
   } else {
     fillColor(SOURCE, "white");
     SOURCE[1] = col;
