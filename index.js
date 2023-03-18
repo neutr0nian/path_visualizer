@@ -1,8 +1,5 @@
-import Bfs from "./algorithms/bfs.js";
-import Dfs from "./algorithms/dfs.js";
-import Dijkstras from "./algorithms/dijkstras.js";
 import { map } from "./constants.js";
-import { animate, fillColor, getCellNumber, runAlgorithm } from "./utils.js";
+import { animate, fillColor, runAlgorithm } from "./utils.js";
 import { prepareBlocks } from "./utils/blocks.js";
 
 const canvas = document.querySelector("canvas");
@@ -115,5 +112,8 @@ djkBtn.addEventListener("click", () => {
 });
 
 runBtn.addEventListener("click", () => {
+  animate(blocks);
+  fillColor(SOURCE, "purple");
+  fillColor(DEST, "green");
   runAlgorithm(ALGOTORUN, SOURCE, DEST);
 });

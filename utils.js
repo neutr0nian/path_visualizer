@@ -28,7 +28,6 @@ export function fillColor(position, color) {
 }
 
 export function runAlgorithm(algoName, source, destination) {
-  animate(blocks);
   switch (algoName) {
     case "bfs":
       const bfs = new Bfs(source, destination);
