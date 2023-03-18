@@ -2,7 +2,7 @@ import Bfs from "./algorithms/bfs.js";
 import Dfs from "./algorithms/dfs.js";
 import Dijkstras from "./algorithms/dijkstras.js";
 import { map } from "./constants.js";
-import { animate, fillColor, getCellNumber } from "./utils.js";
+import { animate, fillColor, getCellNumber, runAlgorithm } from "./utils.js";
 import { prepareBlocks } from "./utils/blocks.js";
 
 const canvas = document.querySelector("canvas");
@@ -22,7 +22,7 @@ const destinationRowInput = document.getElementById("d-row");
 const destinationColInput = document.getElementById("d-col");
 
 const SOURCE = [0, 0];
-const DEST = [0, 0];
+const DEST = [4, 3];
 
 let ALGOTORUN = "";
 
@@ -30,14 +30,17 @@ export const blocks = [];
 
 prepareBlocks(blocks);
 animate(blocks);
+fillColor(SOURCE, "purple");
+fillColor(DEST, "green");
 
 sourceRowInput.addEventListener("change", (e) => {
   const row = parseInt(e.target.value) - 1;
-  console.log(SOURCE[0]);
   if (row > map.length - 1 || row < 0) {
     alert("Please select a valid source row");
+    sourceRowInput.value = SOURCE[0] + 1;
   } else if (map[row][SOURCE[1]] !== 1) {
     alert("Selected [row, col] is not a valid cell");
+    sourceRowInput.value = SOURCE[0] + 1;
   } else {
     fillColor(SOURCE, "white");
     SOURCE[0] = row;
@@ -49,8 +52,10 @@ sourceColInput.addEventListener("change", (e) => {
   const col = parseInt(e.target.value) - 1;
   if (col > map.length - 1 || col < 0) {
     alert("Please enter valid source column");
+    sourceRowInput.value = SOURCE[1] + 1;
   } else if (map[SOURCE[0]][col] !== 1) {
     alert("Selected [row, col] is not a valid cell");
+    sourceRowInput.value = SOURCE[1] + 1;
   } else {
     fillColor(SOURCE, "white");
     SOURCE[1] = col;
@@ -60,11 +65,12 @@ sourceColInput.addEventListener("change", (e) => {
 
 destinationRowInput.addEventListener("change", (e) => {
   const row = parseInt(e.target.value) - 1;
-  console.log("dest row:", row);
   if (row > map.length - 1 || row < 0) {
     alert("Please select a valid destination row");
+    destinationRowInput.value = DEST[0] + 1;
   } else if (map[row][DEST[1]] !== 1) {
     alert("Selected [row, col] is not a valid cell");
+    destinationRowInput.value = DEST[0] + 1;
   } else {
     fillColor(DEST, "white");
     DEST[0] = row;
@@ -74,11 +80,12 @@ destinationRowInput.addEventListener("change", (e) => {
 
 destinationColInput.addEventListener("change", (e) => {
   const col = parseInt(e.target.value) - 1;
-  console.log("dest col:", col);
   if (col > map.length - 1 || col < 0) {
     alert("Please select a valid destination column");
+    destinationColInput.value = DEST[1] + 1;
   } else if (map[DEST[0]][col] !== 1) {
     alert("Selected [row, col ]is not a valid cell");
+    destinationColInput.value = DEST[1] + 1;
   } else {
     fillColor(DEST, "white");
     DEST[1] = col;
@@ -108,24 +115,5 @@ djkBtn.addEventListener("click", () => {
 });
 
 runBtn.addEventListener("click", () => {
-  runAlgorithm(ALGOTORUN);
+  runAlgorithm(ALGOTORUN, SOURCE, DEST);
 });
-
-function runAlgorithm(algoName) {
-  animate(blocks);
-  switch (algoName) {
-    case "bfs":
-      const bfs = new Bfs(SOURCE, DEST);
-      bfs.run();
-      break;
-    case "dfs":
-      const dfs = new Dfs(SOURCE, DEST);
-      dfs.run();
-      break;
-    case "djk":
-      const djk = new Dijkstras(SOURCE, DEST);
-      return djk.run();
-    default:
-      return alert("Please select algorithm to run");
-  }
-}

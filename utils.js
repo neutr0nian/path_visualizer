@@ -1,3 +1,6 @@
+import Bfs from "./algorithms/bfs.js";
+import Dfs from "./algorithms/dfs.js";
+import Dijkstras from "./algorithms/dijkstras.js";
 import { map } from "./constants.js";
 import { blocks } from "./index.js";
 
@@ -22,4 +25,23 @@ export function animate(blocks) {
 export function fillColor(position, color) {
   let cell = getCellNumber(...position);
   blocks[cell].block.draw(color);
+}
+
+export function runAlgorithm(algoName, source, destination) {
+  animate(blocks);
+  switch (algoName) {
+    case "bfs":
+      const bfs = new Bfs(source, destination);
+      bfs.run();
+      break;
+    case "dfs":
+      const dfs = new Dfs(source, destination);
+      dfs.run();
+      break;
+    case "djk":
+      const djk = new Dijkstras(source, destination);
+      return djk.run();
+    default:
+      return alert("Please select algorithm to run");
+  }
 }

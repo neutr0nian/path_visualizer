@@ -23,7 +23,7 @@ body {
 }
 
 .btn-container {
-  margin: 0px auto 20px auto;
+  margin: 0px auto 30px auto;
 }
 
 .container {
@@ -34,8 +34,9 @@ body {
 
 .input-container {
   display: flex;
+  margin-top: 25px;
   justify-content: center;
-  align-items: last baseline;
+  align-items: center;
   gap: 30px;
 }
 
