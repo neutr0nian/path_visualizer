@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-size: medium;
 }
 
@@ -30,6 +30,7 @@ body {
   width: 60%;
   margin: 10px auto 10px auto;
   text-align: center;
+  padding-bottom: 2.5rem;
 }
 
 .input-container {
